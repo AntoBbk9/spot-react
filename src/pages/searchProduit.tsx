@@ -1,21 +1,30 @@
 import { FaSearch } from "react-icons/fa"
-import ArticlesLists from "../composants/articleslists"
 import Footer from "../composants/footer"
 import { RxCross2 } from "react-icons/rx"
 import { useState } from "react";
+import ArticlesListsSearch from "../composants/listArticleSearch";
 
 function SearchProduit() {
   const [inputText, setInputText] = useState("");
-  let inputHandler = (e) => {
-    let lowerCase = e.target.value.toLowerCase();
-    setInputText(lowerCase);
+  let onSubmitHandler = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const query = formData.get('query') as string;
+    const lowerCaseQuery = query.toLowerCase();
+    setInputText(lowerCaseQuery);
+     
+    
+    
+    // let lowerCase = e.target.value.toLowerCase();
+    // setInputText(lowerCase);
+
   };
 
   return (
     <div>
       <div className='w-[40rem] m-auto py-10'>
         <div>
-          <form id="search-product-form" role="search">
+          <form id="search-product-form" role="search" onSubmit={onSubmitHandler}>
             <div className="flex gap-2 items-center ml-24">
               <div className="flex justify-between items-center w-[24rem] border border-1 border-black rounded-md px-3 py-2">
                 <input
@@ -23,7 +32,6 @@ function SearchProduit() {
                   aria-label="Search products"
                   placeholder="Rechercher un produit"
                   type="search"
-                  onChange={inputHandler}
                   name="query"
                   className="outline-none border-none"
                 />
@@ -36,7 +44,7 @@ function SearchProduit() {
             <div className="sr-only" aria-live="polite"></div>
           </form>
         </div>
-        <ArticlesLists inputText={inputText} />
+        <ArticlesListsSearch inputText={inputText}/>
       </div>
       <Footer />
     </div>
