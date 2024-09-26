@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Button from './button';
 
 interface Product {
@@ -57,7 +57,7 @@ function ArticleItem() {
                     </div>
                 </div>
                 <Button children='Sold out' color='secondary'/>
-                <Button children='Buy it now' color='primary'/>
+                <Link to='/payment'><Button children='Buy it now' color='primary'/></Link>
                 <div>
                         <ul className=''>
                             {product.properties.map((property, index) => {
