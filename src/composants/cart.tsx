@@ -1,6 +1,4 @@
 
-import React from 'react';
-
 // Définir une interface pour le produit
 interface Product {
   id: number;
