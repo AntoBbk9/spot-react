@@ -1,5 +1,4 @@
 
-// Définir une interface pour le produit
 interface Product {
   id: number;
   images: string;
