@@ -1,34 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
+import Articles from './pages/layout'
+import ArticlesLists from './composants/articleslists'
+import ArticleItem from './composants/articleitem'
+import SearchProduit from './pages/searchProduit'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Articles />}>
+          <Route index element={<ArticlesLists />}/>
+          <Route path="/articles/:id_product" element={<ArticleItem />}/>
+        </Route>
+        <Route path='/search' element={<SearchProduit />}/>
+        <Route path="*" element={<h1>Page not found</h1>} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
