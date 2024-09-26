@@ -6,18 +6,12 @@ import ArticlesListsSearch from "../composants/listArticleSearch";
 
 function SearchProduit() {
   const [inputText, setInputText] = useState("");
-  let onSubmitHandler = (e) => {
+  let onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
+    const formData = new FormData(e.currentTarget);
     const query = formData.get('query') as string;
     const lowerCaseQuery = query.toLowerCase();
     setInputText(lowerCaseQuery);
-     
-    
-    
-    // let lowerCase = e.target.value.toLowerCase();
-    // setInputText(lowerCase);
-
   };
 
   return (
