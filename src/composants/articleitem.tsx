@@ -7,7 +7,7 @@ interface Product {
   id: string;
   title: string;
   regularPrice: string;
-  images: string;
+  images: string[];
   properties: string[];
 }
 
@@ -17,6 +17,7 @@ function ArticleItem() {
   const [loading, setLoading] = useState<boolean>(false); 
   const [error, setError] = useState<string | null>(null);
   const [count, setCount] = useState<number>(0);
+  const [showCard, setShowCard] = useState<boolean>(false);
 
   async function fetchProduct() {
     try {
@@ -42,8 +43,24 @@ function ArticleItem() {
       {product && (
         <div className='flex gap-4'>
             <div>
-                <img src={product.images} alt={product.title} className='w-96'/>
-                <img src={product.images} alt={product.title} className='w-40 pt-6'/>
+            <ul className=''>
+                        {product.images.map((image, index) => {
+                            let className = 'text-sm';
+
+                            if (index === 0) {
+                               className='w-96';
+                            }
+                                else {
+                            className='w-40 pt-6';
+                            }
+
+                            return (
+                            <li key={index} className={className}>
+                                <img src={image} alt={product.title} />
+                            </li>
+                            );
+                        })}
+                    </ul>   
             </div>
             <div className='w-60'>
                 <h1 className='text-3xl font-bold pb-4'>{product.title}</h1>
@@ -59,25 +76,26 @@ function ArticleItem() {
                 <Button children='Sold out' color='secondary'/>
                 <Link to='/payment'><Button children='Buy it now' color='primary'/></Link>
                 <div>
-                        <ul className=''>
-                            {product.properties.map((property, index) => {
-                                let className = 'text-sm';
+                    <ul className=''>
+                        {product.properties.map((property, index) => {
+                            let className = 'text-sm';
 
-                                if (index === 0) {
-                                className += ' italic my-3';
-                                }
-                                 else {
-                                className += ' list-disc mt-3 ml-3';
-                                }
+                            if (index === 0) {
+                            className += ' italic my-3';
+                            }
+                                else {
+                            className += ' list-disc mt-3 ml-3';
+                            }
 
-                                return (
-                                <li key={index} className={className}>
-                                    {property}
-                                </li>
-                                );
-                            })}
-                        </ul>
-                    </div>             </div>
+                            return (
+                            <li key={index} className={className}>
+                                {property}
+                            </li>
+                            );
+                        })}
+                    </ul>
+                </div>                  
+            </div>
         </div>
       )}
     </div>

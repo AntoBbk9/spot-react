@@ -18,8 +18,8 @@ function ArticlesLists() {
     async function fetchProducts () {
         try {
           setLoading(true); 
-          const response = await axios.get('https://spot-react.onrender.com/products');
-          const data = response.data; 
+          const response = await axios.get(`https://spot-react.onrender.com/products`);          
+          const data = response.data;
 
           setProducts(data); 
           

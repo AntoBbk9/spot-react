@@ -1,9 +1,10 @@
 interface ButtonProps {
     children: string;
     color: 'primary' | 'secondary';
+    onclick?: () => void;
 }
 
-function Button({children, color}:ButtonProps) {
+function Button({children, color }:ButtonProps) {
     let bgColor=''
     if(color === 'secondary'){
         bgColor = 'bg-white border border-1 border-black mt-4'
