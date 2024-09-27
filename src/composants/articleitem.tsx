@@ -17,7 +17,6 @@ function ArticleItem() {
   const [loading, setLoading] = useState<boolean>(false); 
   const [error, setError] = useState<string | null>(null);
   const [count, setCount] = useState<number>(0);
-  const [showCard, setShowCard] = useState<boolean>(false);
 
   async function fetchProduct() {
     try {
