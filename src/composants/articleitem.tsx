@@ -21,7 +21,7 @@ function ArticleItem() {
   async function fetchProduct() {
     try {
       setLoading(true);
-      const response = await axios.get(`https://spot-react.onrender.com/${id_product}`);
+      const response = await axios.get(`https://spot-react.onrender.com/products/${id_product}`);
       setProduct(response.data); 
       setLoading(false);
     } catch (err) {
