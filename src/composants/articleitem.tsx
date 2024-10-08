@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import Button from './button';
+import { FaArrowLeft } from 'react-icons/fa';
 
 interface Product {
   id: string;
@@ -39,27 +40,30 @@ function ArticleItem() {
 
   return (
     <div className='pt-6'>
+      <Link to={"/"}>
+        <FaArrowLeft className='mb-2'/>
+      </Link>
       {product && (
         <div className='flex gap-4'>
             <div>
             <ul className=''>
-                        {product.images.map((image, index) => {
-                            let className = 'text-sm';
+              {product.images.map((image, index) => {
+                let className = 'text-sm';
 
-                            if (index === 0) {
-                               className='w-96';
-                            }
-                                else {
-                            className='w-40 pt-6';
-                            }
+                if (index === 0) {
+                    className='w-96';
+                }
+                    else {
+                className='w-40 pt-6';
+                }
 
-                            return (
-                            <li key={index} className={className}>
-                                <img src={image} alt={product.title} />
-                            </li>
-                            );
-                        })}
-                    </ul>   
+                return (
+                <li key={index} className={className}>
+                    <img src={image} alt={product.title} />
+                </li>
+                );
+              })}
+            </ul>   
             </div>
             <div className='w-60'>
                 <h1 className='text-3xl font-bold pb-4'>{product.title}</h1>
@@ -75,25 +79,25 @@ function ArticleItem() {
                 <Button children='Sold out' color='secondary'/>
                 <Link to='/payment'><Button children='Buy it now' color='primary'/></Link>
                 <div>
-                    <ul className=''>
-                        {product.properties.map((property, index) => {
-                            let className = 'text-sm';
+                  <ul className=''>
+                    {product.properties.map((property, index) => {
+                      let className = 'text-sm';
 
-                            if (index === 0) {
-                            className += ' italic my-3';
-                            }
-                                else {
-                            className += ' list-disc mt-3 ml-3';
-                            }
+                      if (index === 0) {
+                      className += ' italic my-3';
+                      }
+                          else {
+                      className += ' list-disc mt-3 ml-3';
+                      }
 
-                            return (
-                            <li key={index} className={className}>
-                                {property}
-                            </li>
-                            );
-                        })}
-                    </ul>
-                </div>                  
+                      return (
+                      <li key={index} className={className}>
+                          {property}
+                      </li>
+                      );
+                    })}
+                  </ul>
+              </div>                  
             </div>
         </div>
       )}

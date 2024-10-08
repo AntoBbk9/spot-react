@@ -34,7 +34,7 @@ function ArticlesLists() {
     }, []); 
   
     if (loading) {
-      return <p>Chargement...</p>;
+      return <p className='flex justify-center items-center'>Chargement...</p>;
     }
   
     return (
