@@ -18,12 +18,13 @@ interface Payment{
 }
 
 const CheckoutPage = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<Payment>();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<Payment>();
   
 async function formSubmit(data: Payment) {
   try {
     const response = await axios.post("https://spot-react.onrender.com/payments", data);
     console.log(response.data);
+    reset(); 
   } catch (error) {
     console.error("Erreur lors de l'envoi du formulaire :", error);
   }
