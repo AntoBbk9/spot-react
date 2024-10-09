@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import Input from "../composants/payement/input";
 import Button from "../composants/button";
 import { BsHandbag } from "react-icons/bs";
+import axios from 'axios';
 
 interface Payment{
   mailOuTel: string,
@@ -19,12 +20,18 @@ interface Payment{
 const CheckoutPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<Payment>();
   
-  const onSubmit = (data: Payment) => {
-    console.log(data);
-  };
+async function formSubmit(data: Payment) {
+  try {
+    const response = await axios.post("https://spot-react.onrender.com/payments", data);
+    console.log(response.data);
+  } catch (error) {
+    console.error("Erreur lors de l'envoi du formulaire :", error);
+  }
+}
+
 
   return (
-    <div className='m-auto py-10'>  
+    <div className='m-auto pt-10'>  
       <div className='flex justify-between pb-10 px-32'>
       <img src="/logo40.png" alt="photo du logo" className='w-24 h-10'/>
       <div className='flex gap-2'>
@@ -33,7 +40,7 @@ const CheckoutPage = () => {
       </div>
         <div className="flex flex-col lg:flex-row justify-between w-full border-t border-gray-200 2xl:w-[90rem] gap-6 m-auto bg-white">
           <div className="flex mb-6 lg:mb-0 ml-32">
-            <form action="" onSubmit={handleSubmit(onSubmit)} className="mt-5">
+            <form action="" onSubmit={handleSubmit(formSubmit)} className="mt-5">
               <h2 className="text-2xl font-bold mb-4">Contact</h2>
               <Input
                 id="mailOuTel"
@@ -58,7 +65,7 @@ const CheckoutPage = () => {
                 Email me with news and offers
               </label>
 
-              <h2 className="text-2xl font-bold mb-4 rounded">Delivery</h2>
+              <h2 className="text-2xl font-bold mb-4 ">Delivery</h2>
               <select className="border p-2 w-full mb-4">
                 <option>states</option>
                 <option>United States</option>
@@ -266,8 +273,8 @@ const CheckoutPage = () => {
               <Button children="Pay now" color="tertiary"/>
             </form>
           </div>
-          <div className="bg-graycolor w-1/2">
-            <div className="p-4">
+          <div className="bg-graycolor sticky top-20 w-1/2 border-l border-gray-200">
+            <div className="p-4 mr-32">
               <h2 className="text-xl font-bold mb-4">Your Cart</h2>
               <div className="flex justify-between mb-2">
                 <span>Cap Wool</span>
