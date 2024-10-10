@@ -6,7 +6,10 @@ import { FaArrowLeft } from 'react-icons/fa';
 import PopupCart from './card';
 import { Product } from './typeProduct';
 
-
+interface CartItem {  
+  product: Product;
+  quantity: number;
+}
 
 function ArticleItem() {
   const { id_product } = useParams(); 
@@ -37,13 +40,24 @@ function ArticleItem() {
   if (error) return <p>{error}</p>;
 
   const handleAddToCart = () => {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+
+    const existingProductIndex = cartItems.findIndex((item: CartItem) => item.product.id === product?.id);
+
+    if (existingProductIndex !== -1) {
+      cartItems[existingProductIndex].quantity += count;
+    } else {
+      cartItems.push({ product, quantity: count });
+    }
+
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    
     setCartCount(cartCount + count )
     setIsPopupVisible(true);
     setCount(1);
-
+    
   };  
 
-  console.log("Popup visible:", isPopupVisible, "Cart Count:", cartCount);
   return (
     <div className='pt-6'>
 
@@ -75,7 +89,7 @@ function ArticleItem() {
                 <button onClick={() => setCount(count + 1)}>+</button>
               </div>
             </div>
-            {id_product === 'd530' ? (
+            {id_product === 'fda7' ? (
               <div>
                 <Button children='Sold out' color='secondary' />
                 <Link to='/payment'><Button children='Buy it now' color='primary'/></Link>

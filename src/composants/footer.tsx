@@ -3,8 +3,9 @@ import { TiSocialTwitter } from "react-icons/ti";
 
 function Footer() {
   return (
-    <div className="pt-24">
-        <div className="flex flex-col items-center pb-8">
+    <div>
+        <hr />
+        <div className="flex flex-col items-center pb-8 py-10">
             <img src="/logo-small.png" alt="" className="w-12 h-18"/>
             <p className="text-sm font-bold">A brand that strives to inspire and push creative culture forward.</p>
             <p className="w-[40rem] text-center mt-5 text-sm">We approach our work the mentality that every product made

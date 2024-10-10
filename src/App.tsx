@@ -6,7 +6,7 @@ import ArticlesLists from './composants/articleslists'
 import ArticleItem from './composants/articleitem'
 import SearchProduit from './pages/searchProduit'
 import Payment from './pages/payment'
-import CartPage from './composants/card'
+import CartPage from './composants/cart'
 
 function App() {
 
