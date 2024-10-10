@@ -46,6 +46,7 @@ function ArticleItem() {
   console.log("Popup visible:", isPopupVisible, "Cart Count:", cartCount);
   return (
     <div className='pt-6'>
+
       <Link to={"/"}>
         <FaArrowLeft className='mb-2'/>
       </Link>
@@ -74,7 +75,7 @@ function ArticleItem() {
                 <button onClick={() => setCount(count + 1)}>+</button>
               </div>
             </div>
-            {id_product === '8200' ? (
+            {id_product === 'd530' ? (
               <div>
                 <Button children='Sold out' color='secondary' />
                 <Link to='/payment'><Button children='Buy it now' color='primary'/></Link>

@@ -16,10 +16,10 @@ function App() {
         <Route path='/' element={<Articles />}>
           <Route index element={<ArticlesLists />}/>
           <Route path="/articles/:id_product" element={<ArticleItem />}/>
+          <Route path='/card' element={<CartPage />} />
         </Route>
         <Route path='/search' element={<SearchProduit />}/>
         <Route path='/payment' element={<Payment />} />
-        <Route path='/card' element={<CartPage />} />
         <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>
     </BrowserRouter>

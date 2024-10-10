@@ -1,6 +1,7 @@
 {
   "products": [
     {
+      "id": 1,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Varsity-C_Cap-Corduroy-Yellow_Front_1080x_6fe179e1-b3f3-452b-a2d4-ee0c1d70e7c9.webp?v=1676406573&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Varsity-C_Cap-Corduroy-Yellow_Back_1080x_84d2dd15-2063-485f-b46a-a071d8e2b1ea.webp?v=1676406573&width=1946"
@@ -19,6 +20,7 @@
       "isCheckout": true
     },
     {
+      "id": 2,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Varsity-C_Cap-Corduroy-Yellow_Front_1080x_6fe179e1-b3f3-452b-a2d4-ee0c1d70e7c9.webp?v=1676406573&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Varsity-C_Cap-Corduroy-Yellow_Back_1080x_84d2dd15-2063-485f-b46a-a071d8e2b1ea.webp?v=1676406573&width=1946"
@@ -37,6 +39,7 @@
       "isCheckout": true
     },
     {
+      "id": 3,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Varsity-C_Cap-Corduroy-Pink_Front_1080x_20b9871f-01f8-41b3-8483-11c37e116607.webp?v=1676406569&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Varsity-C_Cap-Corduroy-Pink_Back_1080x_23513aa7-ea3e-42c1-a62e-5d68f424e551.webp?v=1676406569&width=1946"
@@ -55,6 +58,7 @@
       "isCheckout": true
     },
     {
+      "id": 4,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Varsity-C_Cap-Corduroy-Pink_Front_1080x_20b9871f-01f8-41b3-8483-11c37e116607.webp?v=1676406569&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Varsity-C_Cap-Corduroy-Pink_Back_1080x_23513aa7-ea3e-42c1-a62e-5d68f424e551.webp?v=1676406569&width=1946"
@@ -73,6 +77,7 @@
       "isCheckout": true
     },
     {
+      "id": 5,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Ebbets-C_Cap_Camel_Front-Angle_1080x_8d228c8c-2958-43f0-bd30-7258cb3df3fc.webp?v=1676406497&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Ebbets-C_Cap_Camel_Back_1080x_50142e26-b3dc-4003-8bc7-5f5a2cf98fdd.webp?v=1676406501&width=1946"
@@ -91,6 +96,7 @@
       "isCheckout": true
     },
     {
+      "id": 6,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Ebbets-C_Cap_Camel_Front-Angle_1080x_8d228c8c-2958-43f0-bd30-7258cb3df3fc.webp?v=1676406497&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Ebbets-C_Cap_Camel_Back_1080x_50142e26-b3dc-4003-8bc7-5f5a2cf98fdd.webp?v=1676406501&width=1946"
@@ -109,6 +115,7 @@
       "isCheckout": true
     },
     {
+      "id": 7,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Varsity-C_Cap-Corduroy-Black_Front_1080x_5df513f9-92c3-4707-b0d0-6e4515667a23.webp?v=1676407572&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Varsity-C_Cap-Corduroy-Black_Back_1080x_a4f0ef18-8baf-4de8-82df-6836c29af452.webp?v=1676407572&width=1946"
@@ -127,6 +134,7 @@
       "isCheckout": true
     },
     {
+      "id": 8,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Varsity-C_Cap-Corduroy-Black_Front_1080x_5df513f9-92c3-4707-b0d0-6e4515667a23.webp?v=1676407572&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Varsity-C_Cap-Corduroy-Black_Back_1080x_a4f0ef18-8baf-4de8-82df-6836c29af452.webp?v=1676407572&width=1946"
@@ -145,6 +153,7 @@
       "isCheckout": true
     },
     {
+      "id": 9,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/DSC07686_Coffee-Jazz-Rap_Black_Shopify_1080x_3c0ebed9-cef5-46d5-ac64-083c2714af73.webp?v=1676406430&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/DSC07708_Coffee-Jazz-Rap_Black_Shopify_1080x_3e75d225-5a4e-49e6-9f70-79bacedcce60.webp?v=1676406430&width=1946"
@@ -159,6 +168,7 @@
       "isCheckout": true
     },
     {
+      "id": 10,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/DSC07686_Coffee-Jazz-Rap_Black_Shopify_1080x_3c0ebed9-cef5-46d5-ac64-083c2714af73.webp?v=1676406430&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/DSC07708_Coffee-Jazz-Rap_Black_Shopify_1080x_3e75d225-5a4e-49e6-9f70-79bacedcce60.webp?v=1676406430&width=1946"
@@ -173,6 +183,7 @@
       "isCheckout": true
     },
     {
+      "id": 11,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Required-Reading-Tee_Black_Front_1080x_a96593fd-47bc-4e8a-bea2-726a8283a9b0.webp?v=1676407121&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Required-Reading-Tee_Black_Back_1080x_ff52084e-6ba2-4f20-9d0a-457468af7c21.webp?v=1676407122&width=1946"
@@ -190,6 +201,7 @@
       "isCheckout": true
     },
     {
+      "id": 12,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Required-Reading-Tee_Black_Front_1080x_a96593fd-47bc-4e8a-bea2-726a8283a9b0.webp?v=1676407121&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Required-Reading-Tee_Black_Back_1080x_ff52084e-6ba2-4f20-9d0a-457468af7c21.webp?v=1676407122&width=1946"
@@ -207,6 +219,7 @@
       "isCheckout": true
     },
     {
+      "id": 13,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Creative-Label-Tee_White-Front_1080x_1a0b4a40-d2c5-406d-96dc-a70aa8c0af8b.webp?v=1676406143&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Creative-Label-Tee_White-Front-Detail_1080x_9854c7e7-1806-43eb-b7fb-33289ccc0a45.webp?v=1676406143&width=1946"
@@ -222,6 +235,7 @@
       "isCheckout": true
     },
     {
+      "id": 14,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Creative-Label-Tee_White-Front_1080x_1a0b4a40-d2c5-406d-96dc-a70aa8c0af8b.webp?v=1676406143&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Creative-Label-Tee_White-Front-Detail_1080x_9854c7e7-1806-43eb-b7fb-33289ccc0a45.webp?v=1676406143&width=1946"
@@ -237,6 +251,7 @@
       "isCheckout": true
     },
     {
+      "id": 15,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Never-Not-Working-Tee_Black_Front_1080x_c522e4e4-ca72-49d9-91ac-2948db699111.webp?v=1676488037&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Never-Not-Working-Tee_Black_Front-Detail_1080x_7fac05b4-1a0d-456e-80d3-967df217c8f3.webp?v=1676488037&width=1946"
@@ -249,6 +264,7 @@
       "isCheckout": true
     },
     {
+      "id": 16,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Never-Not-Working-Tee_Black_Front_1080x_c522e4e4-ca72-49d9-91ac-2948db699111.webp?v=1676488037&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Never-Not-Working-Tee_Black_Front-Detail_1080x_7fac05b4-1a0d-456e-80d3-967df217c8f3.webp?v=1676488037&width=1946"
@@ -261,6 +277,7 @@
       "isCheckout": true
     },
     {
+      "id": 17,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Icon-Crewneck_Black_Front_1080x_1cdc163c-6381-4f73-9a1b-cc0339c613d7.webp?v=1676406648&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Icon-Crewneck_Black_Back_1080x_1.webp?v=1676488181&width=1946"
@@ -277,6 +294,7 @@
       "isCheckout": true
     },
     {
+      "id": 18,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Icon-Crewneck_Black_Front_1080x_1cdc163c-6381-4f73-9a1b-cc0339c613d7.webp?v=1676406648&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Icon-Crewneck_Black_Back_1080x_1.webp?v=1676488181&width=1946"
@@ -293,6 +311,7 @@
       "isCheckout": true
     },
     {
+      "id": 19,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Icon-Crewneck_Green_Front_1080x_4058cbb6-2001-4ee7-84f9-0d886d2a8634.webp?v=1676407383&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Icon-Crewneck_Green_Back_1080x_88eb2c5f-f768-4b40-9e4c-6416c051e657.webp?v=1676407383&width=1946"
@@ -309,6 +328,7 @@
       "isCheckout": true
     },
     {
+      "id": 20,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Icon-Crewneck_Green_Front_1080x_4058cbb6-2001-4ee7-84f9-0d886d2a8634.webp?v=1676407383&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Icon-Crewneck_Green_Back_1080x_88eb2c5f-f768-4b40-9e4c-6416c051e657.webp?v=1676407383&width=1946"
@@ -325,6 +345,7 @@
       "isCheckout": true
     },
     {
+      "id": 21,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Icon-Crewneck_Navy_Front_1080x_8f70c5ff-e4aa-4965-b281-85d2c6a29a92.webp?v=1676406804&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Icon-Crewneck_Navy_Front-detail-04_1080x_1.webp?v=1676488192&width=1946"
@@ -341,6 +362,7 @@
       "isCheckout": true
     },
     {
+      "id": 22,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Icon-Crewneck_Navy_Front_1080x_8f70c5ff-e4aa-4965-b281-85d2c6a29a92.webp?v=1676406804&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Icon-Crewneck_Navy_Front-detail-04_1080x_1.webp?v=1676488192&width=1946"
@@ -357,6 +379,7 @@
       "isCheckout": true
     },
     {
+      "id": 23,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Icon-Crewneck_Olive_Front_1080x_67c3724f-ca2e-4c08-a938-1c813546e3fd.webp?v=1676406946&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Icon-Crewneck_Olive_Back_1080x_70cc57ff-f156-41bc-9d9a-5c6359415faa.webp?v=1676406946&width=1946"
@@ -373,6 +396,7 @@
       "isCheckout": true
     },
     {
+      "id": 24,
       "images": [
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Icon-Crewneck_Olive_Front_1080x_67c3724f-ca2e-4c08-a938-1c813546e3fd.webp?v=1676406946&width=1946",
         "https://theme-spotlight-demo.myshopify.com/cdn/shop/products/Icon-Crewneck_Olive_Back_1080x_70cc57ff-f156-41bc-9d9a-5c6359415faa.webp?v=1676406946&width=1946"

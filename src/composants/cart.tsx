@@ -8,11 +8,11 @@ interface CartItem {
 
 interface CartPageProps {
   cartItems: CartItem[];
-  onRemove: (id: number) => void; // Fonction pour supprimer un article du panier
+  onRemove: (id: number) => void;
 }
 
 function CartPage({ cartItems, onRemove }: CartPageProps) {
-  const totalPrice = cartItems.reduce((total, item) => total + item.product.regularPrice * item.quantity, 0);
+  const totalPrice = cartItems.reduce((total, item) => total + Number(item.product.regularPrice) * item.quantity , 0);
 
   return (
     <div className="container mx-auto p-4">
