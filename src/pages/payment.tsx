@@ -3,32 +3,59 @@ import Input from "../composants/payement/input";
 import Button from "../composants/button";
 import { BsHandbag } from "react-icons/bs";
 import axios from 'axios';
+import { useEffect, useState } from "react";
+import { CartItem } from "../composants/cartItemtype";
 
 interface Payment{
   mailOuTel: string,
   firstName: string,
   lastName: string,
+  adress: string,
+  apartment: string,
   city: string, 
   zipCode: string,
   cardNumber: string,
   securityCode: string,
   expirationDate: string,
-  nameOnCard: string
-
+  nameOnCard: string,
+  cartItems: CartItem[]
 }
 
 const CheckoutPage = () => {
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
   const { register, handleSubmit, formState: { errors }, reset } = useForm<Payment>();
   
 async function formSubmit(data: Payment) {
   try {
-    const response = await axios.post("https://spot-react.onrender.com/payments", data);
+    const paymentData = {
+      ...data,
+      cartItems
+    };
+
+    const response = await axios.post("https://spot-react.onrender.com/payments", paymentData);
     console.log(response.data);
     reset(); 
   } catch (error) {
     console.error("Erreur lors de l'envoi du formulaire :", error);
   }
 }
+
+  useEffect(() => {
+    const storedCartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    setCartItems(storedCartItems);
+  }, []);
+
+
+  const extractPrice = (priceString : string) => {
+    const priceMatch = priceString.match(/[\d.,]+/);
+    return priceMatch ? parseFloat(priceMatch[0].replace(',', '.')) : 0;
+  };
+
+  const subtotal = cartItems.reduce(
+    (total, item) => total + extractPrice(item.product.regularPrice) * item.quantity,
+    0
+  );
 
 
   return (
@@ -270,29 +297,46 @@ async function formSubmit(data: Payment) {
                   Use shipping address as billing address
                 </label>
               </div>
+              <div className="pb-10 border-b">
+                <Button children="Pay now" color="tertiary"/>
+              </div>
 
-              <Button children="Pay now" color="tertiary"/>
+              <hr />
+              <p className="py-4 text-sm">All rights reserved theme-spotlight-demo</p>
             </form>
           </div>
           <div className="bg-graycolor sticky top-20 w-1/2 border-l border-gray-200">
             <div className="p-4 mr-32">
               <h2 className="text-xl font-bold mb-4">Your Cart</h2>
-              <div className="flex justify-between mb-2">
-                <span>Cap Wool</span>
-                <span>$48.00</span>
-              </div>
-              <div className="flex justify-between mb-2">
-                <span>Subtotal</span>
-                <span>$48.00</span>
-              </div>
-              <div className="flex justify-between mb-2">
-                <span>Shipping</span>
-                <span>Enter shipping address</span>
-              </div>
-              <div className="flex justify-between font-bold">
-                <span>Total</span>
-                <span>CAD $48.00</span>
-              </div>
+              {cartItems.map((item, index) => (
+                <div key={index} className="flex flex-col mb-4">
+                  <div className="flex justify-between mb-2 items-center">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={item.product.images[0]}
+                        alt={item.product.title}
+                        className="w-16 h-16 rounded object-cover"
+                          />
+                      <span className="text-sm">{item.product.title}</span>
+                    </div>
+                    <span className="text-sm">{item.product.regularPrice}</span>
+                  </div>
+                </div>
+              ))}
+                  <div className="pt-4">
+                    <div className="flex justify-between mb-2">
+                      <span className="text-sm">Subtotal</span>
+                      <span className="text-sm">${subtotal.toFixed(2)}</span>
+                    </div>
+                    <div className="flex justify-between mb-2">
+                      <span className="text-sm">Shipping</span>
+                      <span className="text-sm">Enter shipping address</span>
+                    </div>
+                  </div>
+               <div className="flex justify-between font-bold pt-3">
+                    <span>Total</span>
+                    <span>CAD ${subtotal.toFixed(2)}</span>
+                  </div>
             </div>
           </div>
         </div>

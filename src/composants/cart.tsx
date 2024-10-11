@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Product } from './typeProduct';
 import { Link } from 'react-router-dom';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import Button from './button';
+import { CartItem } from './cartItemtype';
 
-interface CartItem {
-  product: Product;
-  quantity: number;
-}
+
 
 function CartPage() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -52,7 +49,7 @@ function CartPage() {
         <Link to="/" className="underline">Continuer vos achats</Link>
       </div>
       <div className="flex justify-between border-b py-3">
-        <p className="text-gray-300 text-sm">PRODUIT</p>
+        <p className="text-gray-300 text-sm w-1/2">PRODUIT</p>
         <p className="text-gray-300 text-sm">QUANTITÉ</p>
         <p className="text-gray-300 text-sm">TOTAL</p>
       </div>
@@ -64,7 +61,7 @@ function CartPage() {
             const itemTotalPrice = extractPrice(item.product.regularPrice) * item.quantity;
             return (
               <div key={index} className="flex justify-between py-3">
-                <div className="flex">
+                <div className="flex w-1/2">
                   <img
                     src={item.product.images[0]}
                     alt={item.product.title}

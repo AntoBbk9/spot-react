@@ -5,7 +5,7 @@ import { Product } from "./typeProduct";
 
 function PopupCart({ product, cartCount, onClose }: { product: Product; cartCount: number; onClose: () => void }) {
   return (
-    <div className="absolute top-28 right-52 w-80 bg-white border border-black rounded p-4 z-50">
+    <div className="absolute top-28 right-28 w-80 bg-white border border-black rounded p-4 z-50">
       <div className="flex justify-between items-center border-b pb-2">
         <p className="">Item added to your cart </p>
         <button onClick={onClose} className="text-gray-500 hover:text-black">

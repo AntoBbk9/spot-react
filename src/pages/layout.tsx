@@ -5,7 +5,7 @@ import Footer from '../composants/footer'
 function Articles() {
   return (
     <div>    
-      <div className='w-[40rem] m-auto py-10'>
+      <div className='w-[60rem] m-auto py-10'>
         <Header />
         <div>
             <Outlet />

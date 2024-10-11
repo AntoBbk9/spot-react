@@ -65,14 +65,14 @@ function ArticleItem() {
         <FaArrowLeft className='mb-2'/>
       </Link>
       {product && (
-        <div className='flex gap-4'>
+        <div className='flex gap-6'>
           <div>
             <ul>
               {product.images.map((image, index) => {
-                const className = index === 0 ? 'w-96' : 'w-40 pt-6';
+                const className = index === 0 ? 'w-[40rem]' : 'w-52 pt-6';
                 return (
                   <li key={index} className={className}>
-                    <img src={image} alt={product.title} />
+                    <img src={image} alt={product.title} className='rounded'/>
                   </li>
                 );
               })}
