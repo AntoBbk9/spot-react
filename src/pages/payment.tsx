@@ -5,6 +5,7 @@ import { BsHandbag } from "react-icons/bs";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import { CartItem } from "../composants/cartItemtype";
+import { FiSearch } from "react-icons/fi";
 
 interface Payment{
   mailOuTel: string,
@@ -86,6 +87,7 @@ async function formSubmit(data: Payment) {
                   }
                 }}
                 errors={errors}
+                border="border"
               />
 
               <label className="flex items-center mb-4">
@@ -116,6 +118,7 @@ async function formSubmit(data: Payment) {
                     }
                   }}
                   errors={errors}
+                  border='border'
                 />
                 <Input
                   id="lastName"
@@ -134,10 +137,11 @@ async function formSubmit(data: Payment) {
                     }
                   }}
                   errors={errors}
+                  border="border"
                 />
               </div>
-
-              <Input
+              <div className="flex justify-between items-center h-10 mb-3 border rounded p-2">
+                <Input
                   id="adress"
                   type="text"
                   placeholder="Adress"
@@ -154,7 +158,10 @@ async function formSubmit(data: Payment) {
                     }
                   }}
                   errors={errors}
-                />
+                  border="none"
+                  />
+                  <FiSearch />
+                </div>
 
               <Input
                   id="apartment"
@@ -173,6 +180,7 @@ async function formSubmit(data: Payment) {
                     }
                   }}
                   errors={errors}
+                  border="border"
                 />
               
               <div className="grid grid-cols-3 gap-2">
@@ -189,6 +197,7 @@ async function formSubmit(data: Payment) {
                     }
                   }}
                   errors={errors}
+                  border="border"
                 />
 
                 <select className="border p-2 h-10 rounded">
@@ -209,6 +218,7 @@ async function formSubmit(data: Payment) {
                     }
                   }}
                   errors={errors}
+                  border="border"
                 />
               </div>
 
@@ -244,6 +254,7 @@ async function formSubmit(data: Payment) {
                     }
                   }}
                   errors={errors}
+                  border="none"
                 />
 
                 <div className="grid grid-cols-2 gap-2 mb-2">
@@ -260,6 +271,7 @@ async function formSubmit(data: Payment) {
                       }
                     }}
                     errors={errors}
+                    border="border"
                   />
                   <Input
                     id="securityCode"
@@ -274,6 +286,7 @@ async function formSubmit(data: Payment) {
                       }
                     }}
                     errors={errors}
+                    border="none"
                   />
                 </div>
 
@@ -290,6 +303,7 @@ async function formSubmit(data: Payment) {
                     }
                   }}
                   errors={errors}
+                  border="border"
                 />
 
                 <label className="flex items-center mb-4">

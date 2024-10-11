@@ -8,9 +8,11 @@ interface InputProps {
   register: any;
   errors: any;
   validation?: object;
+  border: 'none' | 'border';
 }
 
-const Input: React.FC<InputProps> = ({ id, label, type, placeholder, register, errors, validation }) => {
+const Input: React.FC<InputProps> = ({ id, label, type, placeholder, register, errors, validation, border }) => {
+  const borderClass = border === 'border' ? 'border' : 'border-none';
   return (
     <div className="mb-4">
       {label && <label htmlFor={id} className="block font-semibold">{label}</label>}
@@ -19,7 +21,7 @@ const Input: React.FC<InputProps> = ({ id, label, type, placeholder, register, e
         type={type}
         placeholder={placeholder}
         {...register(id, validation)}
-        className={`border p-2 w-full h-10 rounded outline-none ${errors[id] ? "border-red-500" : ""}`}
+        className={`${borderClass} p-2 w-full h-10 rounded outline-none ${errors[id] ? "border-red-500" : ""}`}
       />
       {errors[id] && <p className="text-red-500">{errors[id]?.message}</p>}
     </div>
