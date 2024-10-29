@@ -20,10 +20,12 @@ function ArticleItem() {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [cartCount, setCartCount] = useState<number>(0);
 
+  const apiUrl = import.meta.env.VITE_SERVER_URLL;
+
   async function fetchProduct() {
     try {
       setLoading(true);
-      const response = await axios.get(`https://spot-react.onrender.com/products/${id_product}`);
+      const response = await axios.get(`${apiUrl}/${id_product}`);
       setProduct(response.data); 
       setLoading(false);
     } catch (err) {

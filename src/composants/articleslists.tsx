@@ -15,10 +15,12 @@ function ArticlesLists() {
     const [products, setProducts] = useState<ArticleProps[]>([]); 
     const [loading, setLoading] = useState<boolean>(false); 
 
+    const apiUrl = import.meta.env.VITE_SERVER_URLL;
+
     async function fetchProducts () {
         try {
           setLoading(true); 
-          const response = await axios.get(`https://spot-react.onrender.com/products`);          
+          const response = await axios.get(`${apiUrl}`);          
           const data = response.data;
 
           setProducts(data); 
