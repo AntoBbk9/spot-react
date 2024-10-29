@@ -1,27 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import Button from './button';
 import { FaArrowLeft } from 'react-icons/fa';
 import PopupCart from './card';
 import { Product } from './typeProduct';
-
-interface CartItem {  
-  product: Product;
-  quantity: number;
-}
+import { useCartContext } from './context/productContext';
+import { CountContext } from './context/countContext';
 
 function ArticleItem() {
   const { id_product } = useParams(); 
   const [product, setProduct] = useState<Product | null>(null); 
   const [loading, setLoading] = useState<boolean>(false); 
   const [error, setError] = useState<string | null>(null);
-  const [count, setCount] = useState<number>(1);
+  const { count, increment, decrement } = useContext(CountContext) || { count: 1, increment: () => {}, decrement: () => {} }; // Utiliser le CountContext
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-  const [cartCount, setCartCount] = useState<number>(0);
+  
+  const { addToCart, cartCount } = useCartContext();
 
   const apiUrl = import.meta.env.VITE_SERVER_URLL;
-
+  
   async function fetchProduct() {
     try {
       setLoading(true);
@@ -31,6 +29,7 @@ function ArticleItem() {
     } catch (err) {
       setError("Erreur lors de la récupération du produit.");
       console.error(err);
+      setLoading(false);
     }
   }
 
@@ -42,27 +41,14 @@ function ArticleItem() {
   if (error) return <p>{error}</p>;
 
   const handleAddToCart = () => {
-    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-
-    const existingProductIndex = cartItems.findIndex((item: CartItem) => item.product.id === product?.id);
-
-    if (existingProductIndex !== -1) {
-      cartItems[existingProductIndex].quantity += count;
-    } else {
-      cartItems.push({ product, quantity: count });
+    if (product) {
+      addToCart(product, count);
+      setIsPopupVisible(true);
     }
-
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    
-    setCartCount(cartCount + count )
-    setIsPopupVisible(true);
-    setCount(1);
-    
   };  
 
   return (
     <div className='pt-6'>
-
       <Link to={"/"}>
         <FaArrowLeft className='mb-2'/>
       </Link>
@@ -86,9 +72,9 @@ function ArticleItem() {
             <div className='pt-2'>
               <p>Quantité</p>
               <div className='flex justify-around rounded-md w-32 border border-1 border-black px-3 py-2 mt-1'>
-                <button onClick={() => { if (count > 0) setCount(count - 1); }}>-</button>
+                <button onClick={() => { if (count > 1) decrement(); }}>-</button>
                 <p>{count}</p>
-                <button onClick={() => setCount(count + 1)}>+</button>
+                <button onClick={increment}>+</button>
               </div>
             </div>
             {id_product === 'fda7' ? (

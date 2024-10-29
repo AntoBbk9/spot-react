@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useEffect, useState } from "react";
 import { CartItem } from "../composants/cartItemtype";
 import { FiSearch } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 interface Payment{
   mailOuTel: string,
@@ -64,8 +65,10 @@ async function formSubmit(data: Payment) {
       <div className='flex justify-between pb-10 px-32'>
       <img src="/logo40.png" alt="photo du logo" className='w-24 h-10'/>
       <div className='flex gap-2'>
+      <Link to='/card'>
         <BsHandbag />
-      </div>
+      </Link>
+    </div>
       </div>
         <div className="flex flex-col lg:flex-row justify-between w-full border-t border-gray-200 2xl:w-[90rem] gap-6 m-auto bg-white">
           <div className="flex mb-6 lg:mb-0 ml-32">

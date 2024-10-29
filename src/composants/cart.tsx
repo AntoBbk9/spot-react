@@ -1,35 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import Button from './button';
-import { CartItem } from './cartItemtype';
-
-
+import { CartContext } from './context/productContext';
+import { CountContext } from './context/countContext';
 
 function CartPage() {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const cartContext = useContext(CartContext);
+  const countContext = useContext(CountContext);
 
-  useEffect(() => {
-    const storedCartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-    setCartItems(storedCartItems);
-  }, []);
+  if (!cartContext || !countContext) {
+    throw new Error("CartPage must be used within CartContext and CountContext providers");
+  }
+
+  const { cartItems } = cartContext;
+  const { count, increment, decrement } = countContext;
 
   const handleRemove = (index: number) => {
-    const updatedCartItems = [...cartItems];
-    updatedCartItems.splice(index, 1);
-    setCartItems(updatedCartItems);
-    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
-  };
-
-  const handleQuantityChange = (index: number, amount: number) => {
-    const updatedCartItems = [...cartItems];
-    const newQuantity = updatedCartItems[index].quantity + amount;
-
-    if (newQuantity > 0) {
-      updatedCartItems[index].quantity = newQuantity;
-      setCartItems(updatedCartItems);
-      localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
-    }
+    cartContext.cartItems.splice(index, 1);
   };
 
   const extractPrice = (priceString: string) => {
@@ -74,9 +62,9 @@ function CartPage() {
                 </div>
                 <div className='flex gap-2 h-10'>
                   <div className="flex justify-around rounded-md w-32 border border-1 border-black py-2">
-                    <button onClick={() => handleQuantityChange(index, -1)}>-</button>
-                    <p>{item.quantity}</p>
-                    <button onClick={() => handleQuantityChange(index, 1)}>+</button>
+                    <button onClick={decrement}>-</button>
+                    <p>{count}</p>
+                    <button onClick={increment}>+</button>
                   </div>
                   <button onClick={() => handleRemove(index)}>
                     <RiDeleteBinLine />
