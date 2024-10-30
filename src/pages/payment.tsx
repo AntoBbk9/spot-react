@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { CartItem } from "../composants/cartItemtype";
 import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../composants/context/productContext";
 
 interface Payment{
   mailOuTel: string,
@@ -59,15 +60,24 @@ async function formSubmit(data: Payment) {
     0
   );
 
+  const { cartCount } = useCartContext();
+
 
   return (
     <div className='m-auto pt-10'>  
       <div className='flex justify-between pb-10 px-32'>
-      <img src="/logo40.png" alt="photo du logo" className='w-24 h-10'/>
-      <div className='flex gap-2'>
-      <Link to='/card'>
-        <BsHandbag />
+      <Link to='/'>
+        <img src="/logo40.png" alt="photo du logo" className='w-24 h-10'/>
       </Link>
+      <div className='flex gap-2'>
+      <Link to='/card' className="relative">
+          <BsHandbag className="w-6 h-6"/>
+          {cartCount > 0 && (
+            <span className="absolute -top-[-15px] -right-2 bg-yellow-500 text-black text-xs w-5 h-5 rounded-full flex items-center justify-center">
+              {cartCount}
+            </span>
+          )}
+        </Link>
     </div>
       </div>
         <div className="flex flex-col lg:flex-row justify-between w-full border-t border-gray-200 2xl:w-[90rem] gap-6 m-auto bg-white">

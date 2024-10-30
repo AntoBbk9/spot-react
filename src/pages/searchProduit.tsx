@@ -3,6 +3,7 @@ import Footer from "../composants/footer"
 import { RxCross2 } from "react-icons/rx"
 import { useState } from "react";
 import ArticlesListsSearch from "../composants/listArticleSearch";
+import { Link } from "react-router-dom";
 
 function SearchProduit() {
   const [inputText, setInputText] = useState("");
@@ -31,7 +32,9 @@ function SearchProduit() {
                 />
                 <button type="submit"><FaSearch /></button>
               </div>
-              <RxCross2 />
+              <Link to='/'>
+                <RxCross2 />
+              </Link>
             </div>
 
             <div id="search-spinner" aria-hidden hidden={true} />

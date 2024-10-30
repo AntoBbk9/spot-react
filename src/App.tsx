@@ -6,62 +6,82 @@ import ArticleItem from './composants/articleitem';
 import SearchProduit from './pages/searchProduit';
 import Payment from './pages/payment';
 import CartPage from './composants/cart';
-import { CountContext } from './composants/context/countContext';
 import { useEffect, useState } from 'react';
 import { CartContext } from './composants/context/productContext';
 import { CartContextType } from './composants/context/productContext';
 import { Product } from './composants/typeProduct';
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [cartItems, setCartItems] = useState<CartContextType['cartItems']>([]);
-
-  useEffect(() => {
-    const storedCart = localStorage.getItem('cartItems');
-    if (storedCart) {
-      setCartItems(JSON.parse(storedCart));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  }, [cartItems]);
+  const initialCartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+  const [cartItems, setCartItems] = useState<CartContextType['cartItems']>(initialCartItems);
 
   const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
+  const findProductIndex = (productId: string) => {
+    return cartItems.findIndex(item => item.product.id === productId);
+  };
+
   const addToCart = (product: Product, quantity: number) => {
     setCartItems((prevItems) => {
-      const existingProductIndex = prevItems.findIndex(item => item.product.id === product.id);
+      const existingProductIndex = findProductIndex(product.id);
       if (existingProductIndex !== -1) {
-        const updatedItems = [...prevItems];
-        updatedItems[existingProductIndex].quantity += quantity;
-        return updatedItems;
+        return prevItems.map((item, index) => 
+          index === existingProductIndex 
+            ? { ...item, quantity: item.quantity + quantity } 
+            : item
+        );
       } else {
         return [...prevItems, { product, quantity }];
       }
     });
   };
 
-  const increment = () => setCount(count + 1);
-  const decrement = () => setCount(count - 1);
+  const incrementQuantite = (productId: string) => {
+    setCartItems((prevItems) => 
+      prevItems.map(item => 
+        item.product.id === productId 
+          ? { ...item, quantity: item.quantity + 1 } 
+          : item
+      )
+    );
+  };
+
+  const decrementQuantite = (productId: string) => {
+    setCartItems((prevItems) => 
+      prevItems.map(item => {
+        if (item.product.id === productId) {
+          const newQuantity = item.quantity - 1;
+          return newQuantity > 0 ? { ...item, quantity: newQuantity } : item;
+        }
+        return item;
+      })
+    );
+  };
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    console.log(cartItems);
+  }, [cartItems]);
+
+  const removeFromCart = (productId: string) => {
+    setCartItems((prevItems) => prevItems.filter(item => item.product.id !== productId));
+  };
 
   return (
-    <BrowserRouter>
-      <CartContext.Provider value={{ cartItems, addToCart, cartCount }}>
-        <CountContext.Provider value={{ count, increment, decrement }}>
-          <Routes>
-            <Route path="/" element={<Articles />}>
-              <Route index element={<ArticlesLists />} />
-              <Route path="articles/:id_product" element={<ArticleItem />} />
-              <Route path="card" element={<CartPage />} />
-            </Route>
-            <Route path="search" element={<SearchProduit />} />
-            <Route path="payment" element={<Payment />} />
-            <Route path="*" element={<h1>Page not found</h1>} />
-          </Routes>
-        </CountContext.Provider>
-      </CartContext.Provider>
-    </BrowserRouter>
+    <CartContext.Provider value={{ cartItems, addToCart, cartCount, incrementQuantite, decrementQuantite, removeFromCart }}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Articles />} >
+            <Route index element={<ArticlesLists />} />
+            <Route path="articles/:id_product" element={<ArticleItem />} />
+            <Route path="card" element={<CartPage />} />
+          </Route>
+          <Route path="search" element={<SearchProduit />} />
+          <Route path="payment" element={<Payment />} />
+          <Route path="*" element={<h1>Page not found</h1>} />
+        </Routes>
+      </BrowserRouter>
+    </CartContext.Provider>
   );
 }
 

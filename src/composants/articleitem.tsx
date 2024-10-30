@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import Button from './button';
@@ -6,17 +6,16 @@ import { FaArrowLeft } from 'react-icons/fa';
 import PopupCart from './card';
 import { Product } from './typeProduct';
 import { useCartContext } from './context/productContext';
-import { CountContext } from './context/countContext';
 
 function ArticleItem() {
   const { id_product } = useParams(); 
   const [product, setProduct] = useState<Product | null>(null); 
   const [loading, setLoading] = useState<boolean>(false); 
   const [error, setError] = useState<string | null>(null);
-  const { count, increment, decrement } = useContext(CountContext) || { count: 1, increment: () => {}, decrement: () => {} }; // Utiliser le CountContext
+  const [count, setCount] = useState(0);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   
-  const { addToCart, cartCount } = useCartContext();
+  const { addToCart, cartItems, incrementQuantite, decrementQuantite } = useCartContext();
 
   const apiUrl = import.meta.env.VITE_SERVER_URLL;
   
@@ -26,6 +25,9 @@ function ArticleItem() {
       const response = await axios.get(`${apiUrl}/${id_product}`);
       setProduct(response.data); 
       setLoading(false);
+      
+      const existingCartItem = cartItems.find(item => item.product.id === id_product);
+      setCount(existingCartItem ? existingCartItem.quantity : 0);
     } catch (err) {
       setError("Erreur lors de la récupération du produit.");
       console.error(err);
@@ -45,7 +47,19 @@ function ArticleItem() {
       addToCart(product, count);
       setIsPopupVisible(true);
     }
-  };  
+  };
+
+  const increment = () => {
+    setCount(prevCount => prevCount + 1);
+    if (product) incrementQuantite(product.id);
+  };
+
+  const decrement = () => {
+    if (count > 1) {
+      setCount(prevCount => prevCount - 1);
+      if (product) decrementQuantite(product.id);
+    }
+  };
 
   return (
     <div className='pt-6'>
@@ -72,7 +86,7 @@ function ArticleItem() {
             <div className='pt-2'>
               <p>Quantité</p>
               <div className='flex justify-around rounded-md w-32 border border-1 border-black px-3 py-2 mt-1'>
-                <button onClick={() => { if (count > 1) decrement(); }}>-</button>
+                <button onClick={decrement}>-</button>
                 <p>{count}</p>
                 <button onClick={increment}>+</button>
               </div>
@@ -103,7 +117,7 @@ function ArticleItem() {
           </div>
         </div>
       )}      
-      {isPopupVisible && product && <PopupCart product={product} onClose={() => setIsPopupVisible(false)} cartCount={cartCount}/>}        
+      {isPopupVisible && product && <PopupCart product={product} onClose={() => setIsPopupVisible(false)} cartCount={count}/>}        
     </div>
   );
 }

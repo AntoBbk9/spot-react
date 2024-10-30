@@ -10,6 +10,9 @@ export interface CartContextType {
   cartItems: CartItem[];
   addToCart: (product: Product, quantity: number) => void;
   cartCount: number;
+  incrementQuantite: (productId: string) => void;
+  decrementQuantite: (productId: string) => void;
+  removeFromCart: (productId: string) => void;
 }
 
 export const CartContext = React.createContext<CartContextType | undefined>(undefined);

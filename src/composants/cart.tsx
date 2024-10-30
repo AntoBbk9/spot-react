@@ -3,22 +3,15 @@ import { Link } from 'react-router-dom';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import Button from './button';
 import { CartContext } from './context/productContext';
-import { CountContext } from './context/countContext';
 
 function CartPage() {
   const cartContext = useContext(CartContext);
-  const countContext = useContext(CountContext);
 
-  if (!cartContext || !countContext) {
-    throw new Error("CartPage must be used within CartContext and CountContext providers");
+  if (!cartContext) {
+    throw new Error("CartPage must be used within CartContext provider");
   }
 
-  const { cartItems } = cartContext;
-  const { count, increment, decrement } = countContext;
-
-  const handleRemove = (index: number) => {
-    cartContext.cartItems.splice(index, 1);
-  };
+  const { cartItems, incrementQuantite, decrementQuantite, removeFromCart } = cartContext;
 
   const extractPrice = (priceString: string) => {
     const priceMatch = priceString.match(/[\d.,]+/);
@@ -33,8 +26,8 @@ function CartPage() {
   return (
     <div className="container mx-auto pt-6">
       <div className="flex justify-between">
-        <h1 className="text-3xl font-bold mb-4">Votre panier</h1>
-        <Link to="/" className="underline">Continuer vos achats</Link>
+        <h1 className="text-3xl font-bold mb-4">Your Cart</h1>
+        <Link to="/" className="underline">Continue Shopping</Link>
       </div>
       <div className="flex justify-between border-b py-3">
         <p className="text-gray-300 text-sm w-1/2">PRODUIT</p>
@@ -42,7 +35,7 @@ function CartPage() {
         <p className="text-gray-300 text-sm">TOTAL</p>
       </div>
       {cartItems.length === 0 ? (
-        <p>Votre panier est vide.</p>
+        <p>Your Cart is empty.</p>
       ) : (
         <div>
           {cartItems.map((item, index) => {
@@ -62,11 +55,14 @@ function CartPage() {
                 </div>
                 <div className='flex gap-2 h-10'>
                   <div className="flex justify-around rounded-md w-32 border border-1 border-black py-2">
-                    <button onClick={decrement}>-</button>
-                    <p>{count}</p>
-                    <button onClick={increment}>+</button>
+                    <button onClick={() => decrementQuantite(item.product.id)}>-</button>
+                    <p>{item.quantity}</p>
+                    <button onClick={() => incrementQuantite(item.product.id)}>+</button>
                   </div>
-                  <button onClick={() => handleRemove(index)}>
+                  <button onClick={() => {
+                      if (window.confirm("Are you sure you want to remove this item from your cart?")) {
+                        removeFromCart(item.product.id);
+                      }}}> 
                     <RiDeleteBinLine />
                   </button>
                 </div>
