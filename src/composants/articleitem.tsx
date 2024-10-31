@@ -17,7 +17,7 @@ function ArticleItem() {
   
   const { addToCart, cartItems, incrementQuantite, decrementQuantite } = useCartContext();
 
-  const apiUrl = import.meta.env.VITE_SERVER_URLL;
+  const apiUrl = import.meta.env.VITE_SERVER_URL;
   
   async function fetchProduct() {
     try {

@@ -15,15 +15,18 @@ function ArticlesLists() {
     const [products, setProducts] = useState<ArticleProps[]>([]); 
     const [loading, setLoading] = useState<boolean>(false); 
 
-    const apiUrl = import.meta.env.VITE_SERVER_URLL;
+    const apiUrl = import.meta.env.VITE_SERVER_URL;
+    console.log(apiUrl);
+    
 
     async function fetchProducts () {
         try {
           setLoading(true); 
           const response = await axios.get(`${apiUrl}`);          
           const data = response.data;
-
-          setProducts(data); 
+          console.log(data);
+          
+          setProducts(data);
           
           setLoading(false); 
         } catch (error) {
@@ -46,7 +49,7 @@ function ArticlesLists() {
              index % 2 === 0 && (
             <li key={product.id}>
                 <Link to={`/articles/${product.id}`} className="">
-                <img src={product.images} alt="image du produit" className='w-56 h-56 rounded-lg mt-5'/>
+                <img src={product.images} alt="produit" className='w-56 h-56 rounded-lg mt-5'/>
                 <p className='text-xs'>{product.title}</p>
                 <p className='text-sm font-bold'>{product.regularPrice}</p>
                 </Link>
